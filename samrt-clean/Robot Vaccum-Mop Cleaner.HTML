@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartClean X1 - 未来科技版交互指南</title>
+<title>SmartClean X1 智能扫地机器人-使用说明书</title>
 <!-- 引入 Markdown 解析库 -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <!-- 引入粒子库 -->
@@ -425,7 +425,7 @@ body{
     </div>
     
     <h1>您的智能清洁专家</h1>
-    <p>SmartClean X1 电子交互说明书</p>
+    <p>SmartClean X1 电子说明书</p>
     <button class="start-btn" onclick="scrollToSection('manual')">阅读使用指南</button>
   </section>
 
@@ -935,8 +935,8 @@ function openModal(type) {
 function closeModal() { document.getElementById('infoModal').classList.remove('active'); }
 
 /* ================= DeepSeek (Volcengine ARK) API ================= */
-const apiKey = "40a16331-f4b0-43a0-865b-abf84c05fd30"; // åç«¯ç´è¿ä¼æ´é²å¯é¥ï¼ä»ä½ä½ä¸æ¼ç¤º
-const modelId = "ep-202512010030809-x45z4"; // å¡«åæ§å¶å°éç DeepSeek æ¥å¥ç¹/æ¨¡å ID
+const apiKey = "40a16331-f4b0-43a0-865b-abf84c05fd30"; // 前端直连会暴露密钥，仅作作业演示
+const modelId = "ep-20251201003809-x45z4"; // 请填控制台里的 DeepSeek 接入点/模型 ID
 
 async function callAI(prompt, system, elementId, btnId) {
     const resBox = document.getElementById(elementId);
@@ -945,8 +945,8 @@ async function callAI(prompt, system, elementId, btnId) {
 
     btn.disabled = true;
     const originalBtnText = btn.innerText;
-    btn.innerText = "DeepSeek çæä¸­...";
-    resBox.innerHTML = '<div style="text-align:center; opacity:0.7">AI æ­£å¨çæ...</div>';
+    btn.innerText = "DeepSeek 生成中...";
+    resBox.innerHTML = '<div style="text-align:center; opacity:0.7">AI 正在生成...</div>';
     
     try {
         const response = await fetch("https://ark.cn-beijing.volces.com/api/v3/chat/completions", {
@@ -971,11 +971,11 @@ async function callAI(prompt, system, elementId, btnId) {
             throw new Error(`HTTP ${response.status}: ${errText}`);
         }
         const data = await response.json();
-        const text = data.choices?.[0]?.message?.content || "AI ææ¶æ åå¤";
+        const text = data.choices?.[0]?.message?.content || "AI 暂时无回复";
         resBox.innerHTML = marked.parse(text);
     } catch (e) {
         console.error(e);
-        resBox.innerHTML = `<span style="color:#ff6b6b">è¯·æ±å¤±è´¥ï¼${e.message || "ç½ç»éè¯¯"}</span>`;
+        resBox.innerHTML = `<span style="color:#ff6b6b">请求失败：${e.message || "网络错误"}</span>`;
     } finally {
         btn.disabled = false;
         btn.innerText = originalBtnText;
