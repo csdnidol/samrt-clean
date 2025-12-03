@@ -572,14 +572,14 @@ body{
           <h3> 清洁排程助手</h3>
           <select class="ai-select" id="houseType"><option>小户型 (一居室)</option><option selected>中户型 (两居/三居)</option><option>大平层/别墅</option></select>
           <select class="ai-select" id="floorMat"><option>瓷砖/木地板</option><option>地毯</option><option>养宠家庭</option></select>
-          <button class="ai-btn" id="btnSchedule" onclick="getAISchedule()">生成周计划 ✨</button>
+          <button class="ai-btn" id="btnSchedule" onclick="getAISchedule()">生成周计划 </button>
           <div class="ai-result-box" id="resSchedule">DeepSeek 准备就绪...</div>
         </div>
         <div class="ai-card">
           <h3> 污渍清洁向导</h3>
           <input type="text" class="ai-input" id="stainType" placeholder="例如：红酒渍、猫砂...">
           <select class="ai-select" id="stainSurface"><option>瓷砖</option><option>地板</option><option>地毯</option></select>
-          <button class="ai-btn" id="btnStain" onclick="getAIStainAdvice()">获取建议 ✨</button>
+          <button class="ai-btn" id="btnStain" onclick="getAIStainAdvice()">获取建议 </button>
           <div class="ai-result-box" id="resStain">AI 帮您支招...</div>
         </div>
         <div class="ai-card">
@@ -646,10 +646,10 @@ body{
         
         <div class="advice-buttons">
             <a href="#" class="cta-button primary-btn">
-                <i>📥</i> 下载 APP
+                 下载 APP
             </a>
             <a href="#" class="cta-button secondary-btn">
-                <i>💁</i> 联系客服
+                 联系客服
             </a>
         </div>
     </div>
@@ -994,7 +994,7 @@ function openModal(type) {
     if(type==='dustbin') html = '<h3>清理尘盒</h3><p>取出尘盒 -> 倒掉垃圾 -> 清洗滤网。<br><strong>注意：</strong>HEPA滤网必须晾干24小时才能装回。</p>';
     if(type==='brush') html = '<h3>清理滚刷</h3><p>拆卸主刷盖 -> 取出主刷 -> 使用小工具清理两端缠绕毛发。</p>';
     if(type==='sensor') html = '<h3>传感器保养</h3><p>定期用干布擦拭机器底部的悬崖传感器和侧面的沿墙传感器，防止机器乱撞或报错。</p>';
-    if(type==='mop') html = '<h3>水箱与拖布保养</h3><div style="font-size:4rem;margin:1rem">💧</div><p>1. 每次拖地结束后，请务必取出水箱，倒掉剩余的水，防止产生异味。<br>2. 撕下拖布清洗并晾干。</p>';
+    if(type==='mop') html = '<h3>水箱与拖布保养</h3><div style="font-size:4rem;margin:1rem"></div><p>1. 每次拖地结束后，请务必取出水箱，倒掉剩余的水，防止产生异味。<br>2. 撕下拖布清洗并晾干。</p>';
     content.innerHTML = html;
     modal.classList.add('active');
 }
@@ -1074,4 +1074,5 @@ function getAIDiagnose() {
 </script>
 </body>
 </html>
+
 
