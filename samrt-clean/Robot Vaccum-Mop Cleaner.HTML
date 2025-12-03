@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -51,6 +51,25 @@ body{
 .nav-item{position:relative;cursor:pointer;padding:.5rem 1rem;border-radius:30px;font-weight:500;color:var(--text-dim);transition:.3s;border: 1px solid transparent;}
 .nav-item:hover{color:var(--primary-color);background:rgba(64, 224, 208, 0.1);border-color: rgba(64,224,208,0.3);box-shadow: 0 0 15px rgba(64, 224, 208, 0.1);}
 .nav-item.active{color:var(--bg-dark);background:var(--primary-color);box-shadow: 0 0 20px rgba(64, 224, 208, 0.4);}
+.nav-item::after{
+    content: attr(data-tip);
+    position: absolute;
+    left: 50%;
+    bottom: -32px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    background: rgba(64,224,208,0.14);
+    color: var(--primary-color);
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    opacity: 0;
+    pointer-events: none;
+    border: 1px solid rgba(64,224,208,0.25);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-item:hover::after{opacity:1; transform: translateX(-50%) translateY(2px);}
 
 /* 通用布局与动画 */
 .main-content{margin-top:0;} /* Hero 全屏覆盖 */
@@ -456,12 +475,12 @@ body{
   <div class="nav-container">
     <div class="logo"><span style="color:var(--primary-color)">❖</span> SmartClean X1</div>
     <ul class="nav-menu">
-      <li class="nav-item active" onclick="scrollToSection('home')" title="点击则跳转">首页</li>
-      <li class="nav-item" onclick="scrollToSection('manual')" title="点击则跳转"> 使用指南</li>
-      <li class="nav-item" onclick="scrollToSection('simulation')" title="点击则跳转">智能操控</li>
-      <li class="nav-item" onclick="scrollToSection('ai-lab')" style="color:var(--primary-color)" title="点击则跳转"> AI 实验室</li>
-      <li class="nav-item" onclick="scrollToSection('maintenance')" title="点击则跳转">维护保养</li>
-      <li class="nav-item" onclick="scrollToSection('advice')" title="点击则跳转">使用建议</li>
+      <li class="nav-item active" onclick="scrollToSection('home')" data-tip="点击跳转">首页</li>
+      <li class="nav-item" onclick="scrollToSection('manual')" data-tip="点击跳转"> 使用指南</li>
+      <li class="nav-item" onclick="scrollToSection('simulation')" data-tip="点击跳转">智能操控</li>
+      <li class="nav-item" onclick="scrollToSection('ai-lab')" style="color:var(--primary-color)" data-tip="点击跳转"> AI 实验室</li>
+      <li class="nav-item" onclick="scrollToSection('maintenance')" data-tip="点击跳转">维护保养</li>
+      <li class="nav-item" onclick="scrollToSection('advice')" data-tip="点击跳转">使用建议</li>
     </ul>
   </div>
 </nav>
@@ -646,10 +665,10 @@ body{
         
         <div class="advice-buttons">
             <a href="#" class="cta-button primary-btn">
-                 下载 APP
+                下载 APP
             </a>
             <a href="#" class="cta-button secondary-btn">
-                 联系客服
+                联系客服
             </a>
         </div>
     </div>
@@ -1074,6 +1093,4 @@ function getAIDiagnose() {
 </script>
 </body>
 </html>
-
-
 
